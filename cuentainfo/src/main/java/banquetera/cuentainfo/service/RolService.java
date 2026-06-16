@@ -2,6 +2,7 @@ package banquetera.cuentainfo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -12,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 @Service
 @Validated
 public class RolService {
-
+    @Autowired
     private RolRepository repo;
 
     public List<Rol> listar() {

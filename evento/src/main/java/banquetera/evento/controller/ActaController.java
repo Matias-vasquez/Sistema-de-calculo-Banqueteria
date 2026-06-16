@@ -22,7 +22,6 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/api/actas")
 public class ActaController {
-
     @Autowired
     private ActaService service;
 
@@ -106,7 +105,8 @@ public class ActaController {
     // ─── DELETE /api/actas/{id}/platillos/{platilloId} ───────────────────────
 
     @DeleteMapping("/{id}/platillos/{platilloId}")
-    public ResponseEntity<Acta> quitarPlatillo(@PathVariable @NotNull Long id, @PathVariable @NotNull Long platilloId) {
+    public ResponseEntity<Acta> quitarPlatillo(@PathVariable @NotNull Long id,
+                                               @PathVariable @NotNull Long platilloId) {
         return ResponseEntity.ok(service.quitarPlatillo(id, platilloId));
     }
 }

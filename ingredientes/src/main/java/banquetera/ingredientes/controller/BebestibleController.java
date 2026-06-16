@@ -14,36 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import banquetera.ingredientes.model.Platillo;
-import banquetera.ingredientes.service.PlatilloService;
+import banquetera.ingredientes.model.Bebestible;
+import banquetera.ingredientes.service.BebestibleService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-
 @RestController
-@RequestMapping("api/platillo")
-public class Platillocontroller {
+@RequestMapping("api/bebestible")
+public class BebestibleController {
     @Autowired
-    PlatilloService serv;
+    BebestibleService serv;
 
     @GetMapping("all")
-    public ResponseEntity<List<Platillo>> listarTodo() {
+    public ResponseEntity<List<Bebestible>> listarTodo() {
         return ResponseEntity.ok(serv.listarTodo());
     }
    
     @GetMapping("{id}")
-    public ResponseEntity<Platillo> buscarXId(@PathVariable @NotNull Long id) {
+    public ResponseEntity<Bebestible> buscarXId( @PathVariable @NotNull Long id) {
         return ResponseEntity.ok(serv.buscarId(id));
     }
     
     @PostMapping
-    public ResponseEntity<Platillo> crear(@RequestBody @Valid Platillo platillo){
-        return ResponseEntity.status(HttpStatus.CREATED).body(serv.crear(platillo));
+    public ResponseEntity<Bebestible> crear(@RequestBody @Valid Bebestible bebestible){
+        return ResponseEntity.status(HttpStatus.CREATED).body(serv.crear(bebestible));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Platillo> actualizar(@PathVariable @NotNull Long id, @RequestBody @Valid Platillo platilloActualizado){
-        return ResponseEntity.ok(serv.actualizar(id, platilloActualizado));
+    public ResponseEntity<Bebestible> actualizar(@PathVariable @NotNull Long id, @RequestBody @Valid Bebestible bebestibleActualizado){
+        return ResponseEntity.ok(serv.actualizar(id, bebestibleActualizado));
     }
 
     @DeleteMapping("/{id}")

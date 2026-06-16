@@ -1,7 +1,7 @@
-package com.banqueteria.service;
+package banquetera.evento.service;
 
-import com.banqueteria.model.DietaAlergia;
-import com.banqueteria.repository.DietaAlergiaRepository;
+import banquetera.evento.model.DietaAlergia;
+import banquetera.evento.repository.DietaAlergiaRepository;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

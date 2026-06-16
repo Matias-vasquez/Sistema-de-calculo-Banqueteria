@@ -3,6 +3,7 @@ package banquetera.cuentainfo.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -13,9 +14,9 @@ import jakarta.validation.constraints.NotNull;
 @Service
 @Validated
 public class CuentaService {
-
+    @Autowired
     private CuentaRepository repo;
-
+    @Autowired
     private RolService rolService;
 
     public List<Cuenta> listar() {

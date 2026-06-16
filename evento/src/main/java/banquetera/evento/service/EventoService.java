@@ -1,16 +1,15 @@
-package com.banqueteria.service;
-
-import com.banqueteria.model.Acta;
-import com.banqueteria.model.Cuenta;
-import com.banqueteria.model.Evento;
-import com.banqueteria.repository.EventoRepository;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package banquetera.evento.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import banquetera.evento.model.Evento;
+import banquetera.evento.repository.EventoRepository;
+import jakarta.validation.constraints.NotNull;
 
 @Service
 public class EventoService {
@@ -22,7 +21,7 @@ public class EventoService {
     private ActaService actaService;
 
     @Autowired
-    private CuentaService cuentaService;
+    private ClienteExternoService clienteExterno;
 
     // ─── Listar todos ────────────────────────────────────────────────────────
 
@@ -41,12 +40,12 @@ public class EventoService {
     // ─── Crear ───────────────────────────────────────────────────────────────
 
     public Evento crear(@NotNull Evento evento) {
-        // Validar que el acta exista
+        // Validar que el acta exista en este microservicio
         if (evento.getActa() == null)
             throw new RuntimeException("El acta es obligatoria");
         actaService.buscarId(evento.getActa().getId());
 
-        // Validar que la fecha de término sea posterior a la de inicio
+        // Validar fechas
         if (evento.getTerminoEvento() != null && evento.getFechaEvento() != null &&
             evento.getTerminoEvento().isBefore(evento.getFechaEvento()))
             throw new RuntimeException("La fecha de término no puede ser anterior a la fecha de inicio");
@@ -88,25 +87,23 @@ public class EventoService {
         repo.delete(evento);
     }
 
-    // ─── Agregar Cuenta al Evento ─────────────────────────────────────────────
+    // ─── Agregar Cuenta ───────────────────────────────────────────────────────
 
     public Evento agregarCuenta(@NotNull Long eventoId, @NotNull Long cuentaId) {
         Evento evento = buscarId(eventoId);
-        Cuenta cuenta = cuentaService.buscarId(Math.toIntExact(cuentaId));
-
-        if (evento.getCuentas().contains(cuenta))
+        // Validar que la cuenta exista en el microservicio externo
+        clienteExterno.buscarCuenta(cuentaId);
+        if (evento.getCuentasIds().contains(cuentaId))
             throw new RuntimeException("La cuenta ya está asociada a este evento");
-
-        evento.getCuentas().add(cuenta);
+        evento.getCuentasIds().add(cuentaId);
         return repo.save(evento);
     }
 
-    // ─── Quitar Cuenta del Evento ─────────────────────────────────────────────
+    // ─── Quitar Cuenta ────────────────────────────────────────────────────────
 
     public Evento quitarCuenta(@NotNull Long eventoId, @NotNull Long cuentaId) {
         Evento evento = buscarId(eventoId);
-        Cuenta cuenta = cuentaService.buscarId(Math.toIntExact(cuentaId));
-        evento.getCuentas().remove(cuenta);
+        evento.getCuentasIds().remove(cuentaId);
         return repo.save(evento);
     }
 }

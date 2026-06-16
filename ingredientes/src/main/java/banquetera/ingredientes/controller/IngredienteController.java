@@ -2,6 +2,7 @@ package banquetera.ingredientes.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,14 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import banquetera.ingredientes.model.Ingrediente;
 import banquetera.ingredientes.service.IngredienteService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-
-
-
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("api/ingrediente")
 public class IngredienteController {
+    @Autowired
     IngredienteService serv;
 
     @GetMapping("all")
@@ -32,7 +31,7 @@ public class IngredienteController {
     }
    
     @GetMapping("{id}")
-    public ResponseEntity<Ingrediente> buscarXId(@PathVariable Long id) {
+    public ResponseEntity<Ingrediente> buscarXId(@PathVariable @NotNull Long id) {
         return ResponseEntity.ok(serv.buscarId(id));
     }
     
@@ -42,12 +41,12 @@ public class IngredienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Ingrediente> actualizar(@PathVariable @NotEmpty Long id, @RequestBody @Valid Ingrediente ingredienteActualizado){
+    public ResponseEntity<Ingrediente> actualizar(@PathVariable @NotNull Long id, @RequestBody @Valid Ingrediente ingredienteActualizado){
         return ResponseEntity.ok(serv.actualizar(id, ingredienteActualizado));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable @NotEmpty Long id){
+    public ResponseEntity<Void> eliminar(@PathVariable @NotNull Long id){
         serv.eliminar(id);
         return ResponseEntity.noContent().build();
     }

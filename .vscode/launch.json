@@ -1,0 +1,46 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-IngredientesApplication<ingredientes>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "banquetera.ingredientes.IngredientesApplication",
+            "projectName": "ingredientes",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52723 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ingredientes"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EventoApplication<evento>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "banquetera.evento.EventoApplication",
+            "projectName": "evento",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=59603 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=evento"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CuentainfoApplication<cuentainfo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "banquetera.cuentainfo.CuentainfoApplication",
+            "projectName": "cuentainfo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayApplication<gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "banquetera.gateway.GatewayApplication",
+            "projectName": "gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,10 +1,15 @@
 package banquetera.ingredientes.model;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,7 +27,7 @@ public class Platillo {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Integer id;
+    private Long id;
     
     @NotBlank(message = "El nombre del ingrediente es obligatorio")
     @Size(max = 50, message = "El nombre no puede superar los 50 caracteres")
@@ -37,4 +42,11 @@ public class Platillo {
     @Column(name = "DIETA", nullable = false, length=50)
     private String dieta;
 
+    @ManyToMany
+    @JoinTable(
+    name = "platillo_ingrediente",
+    joinColumns = @JoinColumn(name = "platillo_id"),
+    inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
+)
+    private Set<Ingrediente> ingrediente;
 }

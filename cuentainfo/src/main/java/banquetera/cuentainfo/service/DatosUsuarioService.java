@@ -2,6 +2,7 @@ package banquetera.cuentainfo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -13,9 +14,9 @@ import jakarta.validation.constraints.NotNull;
 @Service
 @Validated
 public class DatosUsuarioService {
-
+    @Autowired
     private DatosUsuarioRepository repo;
-
+    @Autowired
     private CuentaService cuentaService;
 
     public List<DatosUsuario> listar() {

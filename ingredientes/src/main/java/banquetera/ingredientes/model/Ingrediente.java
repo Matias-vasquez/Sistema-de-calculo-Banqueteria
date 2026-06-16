@@ -24,7 +24,7 @@ public class Ingrediente {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Integer id;
+    private Long  id;
     
     @NotBlank(message = "El nombre del ingrediente es obligatorio")
     @Size(max = 50, message = "El nombre no puede superar los 50 caracteres")
