@@ -18,6 +18,8 @@ import banquetera.evento.model.Acta;
 import banquetera.evento.service.ActaService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/actas")
@@ -38,7 +40,6 @@ public class ActaController {
     public ResponseEntity<Acta> buscarId(@PathVariable @NotNull Long id) {
         return ResponseEntity.ok(service.buscarId(id));
     }
-
     // ─── POST /api/actas ─────────────────────────────────────────────────────
 
     @PostMapping

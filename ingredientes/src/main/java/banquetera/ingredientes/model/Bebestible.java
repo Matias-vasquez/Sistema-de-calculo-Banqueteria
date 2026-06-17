@@ -33,4 +33,5 @@ public class Bebestible{
   @Column(name = "DESCRIPCION", nullable = true, length = 200)
   private String descripcion;
 
+
 }

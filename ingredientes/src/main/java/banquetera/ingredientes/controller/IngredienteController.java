@@ -25,7 +25,7 @@ public class IngredienteController {
     @Autowired
     IngredienteService serv;
 
-    @GetMapping("all")
+    @GetMapping
     public ResponseEntity<List<Ingrediente>> listarTodo() {
         return ResponseEntity.ok(serv.listarTodo());
     }

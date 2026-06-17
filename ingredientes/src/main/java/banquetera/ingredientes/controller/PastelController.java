@@ -25,7 +25,7 @@ public class PastelController {
     @Autowired
     PastelService serv;
 
-    @GetMapping("all")
+    @GetMapping
     public ResponseEntity<List<Pastel>> listarTodo() {
         return ResponseEntity.ok(serv.listarTodo());
     }
@@ -50,4 +50,5 @@ public class PastelController {
         serv.eliminar(id);
         return ResponseEntity.noContent().build();
     }
+
 }

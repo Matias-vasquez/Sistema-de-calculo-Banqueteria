@@ -36,6 +36,13 @@ public class CuentaService {
         return repo.save(cuenta);
     }
 
+    public List<Cuenta> buscarEstado(String x){
+        return repo.findByEstado(x);
+    }
+
+    public Cuenta buscarCorreo(String correo){
+        return repo.findByEmail(correo);
+    }
 
     public Cuenta actualizar(@NotNull Long id, @NotNull Cuenta cuentaNueva) {
         Cuenta cuentaExistente = buscarId(id);

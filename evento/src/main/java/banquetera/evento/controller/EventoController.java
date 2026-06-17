@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import banquetera.evento.model.Evento;
 import banquetera.evento.service.EventoService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @RestController
@@ -35,6 +37,16 @@ public class EventoController {
         return ResponseEntity.ok(service.buscarId(id));
     }
 
+    @GetMapping("/estado")
+    public ResponseEntity<List<Evento>> buscarEstado(@RequestParam @NotBlank String estado) {
+        return ResponseEntity.ok(service.buscarEstado(estado));
+    }
+
+    @GetMapping("/nombre")
+    public ResponseEntity<Evento> buscarNombre(@RequestParam @NotBlank String nombre) {
+        return ResponseEntity.ok(service.buscarNombre(nombre));
+    }
+    
     @PostMapping
     public ResponseEntity<Evento> crear(@RequestBody @Valid Evento evento) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.crear(evento));

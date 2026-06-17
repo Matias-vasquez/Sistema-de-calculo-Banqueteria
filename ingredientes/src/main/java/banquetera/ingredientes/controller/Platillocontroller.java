@@ -26,7 +26,7 @@ public class Platillocontroller {
     @Autowired
     PlatilloService serv;
 
-    @GetMapping("all")
+    @GetMapping
     public ResponseEntity<List<Platillo>> listarTodo() {
         return ResponseEntity.ok(serv.listarTodo());
     }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import banquetera.evento.model.Evento;
 import banquetera.evento.repository.EventoRepository;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Service
@@ -35,6 +36,15 @@ public class EventoService {
         Optional<Evento> retorno = repo.findById(id);
         if (!retorno.isPresent()) throw new RuntimeException("Evento no encontrado");
         return retorno.get();
+    }
+    // buscar por estado
+
+    public List<Evento> buscarEstado(@NotBlank String estado){
+        return repo.findByEstado(estado);
+    }
+
+    public Evento buscarNombre(@NotBlank String nombre){
+        throw new RuntimeException("No se encontro acta");
     }
 
     // ─── Crear ───────────────────────────────────────────────────────────────

@@ -25,7 +25,7 @@ public class BebestibleController {
     @Autowired
     BebestibleService serv;
 
-    @GetMapping("all")
+    @GetMapping
     public ResponseEntity<List<Bebestible>> listarTodo() {
         return ResponseEntity.ok(serv.listarTodo());
     }
