@@ -45,5 +45,6 @@ public class Pastel {
     inverseJoinColumns = @JoinColumn(name = "ingrediente_id"))
     private Set<Ingrediente> ingrediente;
     
-
+    @Column(name = "ID_ACTA", nullable = false)
+    private Long idActa;
 }

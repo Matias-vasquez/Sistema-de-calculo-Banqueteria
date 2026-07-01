@@ -30,7 +30,7 @@ export default function CotizacionPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const tipoEvento = searchParams.get('tipo') || '';
-  const hoy = new Date().toISOString().split('T')[0];
+  const minFecha = (() => { const d = new Date(); d.setDate(d.getDate() + 3); return d.toISOString().split('T')[0]; })();
 
   const [formData, setFormData] = useState({
     fechaEvento: '',
@@ -180,7 +180,7 @@ export default function CotizacionPage() {
                 <input
                   type="date"
                   required
-                  min={hoy}
+                  min={minFecha}
                   value={formData.fechaEvento}
                   onChange={(e) => setFormData({ ...formData, fechaEvento: e.target.value })}
                   className="w-full px-4 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring"

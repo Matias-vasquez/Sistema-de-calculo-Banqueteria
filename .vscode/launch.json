@@ -41,6 +41,16 @@
             "projectName": "gateway",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CalcuuloApplication<calcuulo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "banquetera.calcuulo.CalcuuloApplication",
+            "projectName": "calcuulo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Users, Wine, Building2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Users, Wine, Building2, UserCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
@@ -19,6 +19,9 @@ export default function HomePage() {
               <button className="bg-white text-primary px-6 py-2 rounded-lg hover:opacity-90 transition">
                 Iniciar Sesión
               </button>
+            </Link>
+            <Link to="/mis-eventos" title="Mis Eventos" className="text-white hover:opacity-80 transition">
+              <UserCircle className="w-8 h-8" />
             </Link>
           </div>
         </div>

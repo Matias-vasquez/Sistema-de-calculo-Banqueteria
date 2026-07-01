@@ -5,6 +5,8 @@ import LoginPage from './components/LoginPage';
 import RegistroPage from './components/RegistroPage';
 import EmpleadoPage from './components/EmpleadoPage';
 import AdministradorPage from './components/AdministradorPage';
+import ServicioDetallePage from './components/ServicioDetallePage';
+import MisEventosPage from './components/MisEventosPage';
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/registro" element={<RegistroPage />} />
         <Route path="/empleado" element={<EmpleadoPage />} />
         <Route path="/administrador" element={<AdministradorPage />} />
+        <Route path="/administrador/servicio/:id" element={<ServicioDetallePage />} />
+        <Route path="/mis-eventos" element={<MisEventosPage />} />
       </Routes>
     </BrowserRouter>
   );

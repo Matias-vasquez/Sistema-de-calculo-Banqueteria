@@ -55,13 +55,6 @@ public class Acta {
     @Column(name = "FORMATO_ALIMENTO", nullable = false, length = 1)
     private String formatoAlimento;
  
-    /**
-     * ID del Pastel en el microservicio externo (reemplaza la FK directa)
-     */
-    @NotNull(message = "El ID del pastel es obligatorio")
-    @Column(name = "PASTEL_PASTEL_ID", nullable = false, unique = true)
-    private Long pastelId;
- 
     // ─── Tabla intermedia: ACTA_BEBESTIBLES ──────────────────────────────────
     // Guarda solo los IDs de bebestibles del microservicio externo
  

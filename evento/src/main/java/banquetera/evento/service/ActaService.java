@@ -37,7 +37,6 @@ public class ActaService {
 
     public Acta crear(@NotNull Acta acta) {
         // Validar que el pastel exista en el microservicio externo
-        clienteExterno.buscarPastel(acta.getPastelId());
         return repo.save(acta);
     }
 
@@ -46,14 +45,9 @@ public class ActaService {
     public Acta actualizar(@NotNull Long id, @NotNull Acta actaNueva) {
         Acta actaExistente = buscarId(id);
 
-        // Validar nuevo pastel si cambió
-        if (actaNueva.getPastelId() != null)
-            clienteExterno.buscarPastel(actaNueva.getPastelId());
-
         actaExistente.setBarraAlimentos(actaNueva.getBarraAlimentos());
         actaExistente.setBarraAlcohol(actaNueva.getBarraAlcohol());
         actaExistente.setFormatoAlimento(actaNueva.getFormatoAlimento());
-        actaExistente.setPastelId(actaNueva.getPastelId());
 
         return repo.save(actaExistente);
     }
